@@ -11,7 +11,7 @@
         },
     ],
     "require": {
-	    "yii2mod/yii2-enum": "dev-master",
+	    "yii2mod/yii2-enum": "*",
 	    "yii2mod/yii2-editable": "*",
             "yii2mod/yii2-toggle-column": "*"
     },
