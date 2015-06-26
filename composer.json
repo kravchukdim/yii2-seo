@@ -10,11 +10,7 @@
             "email": "k.dima.dev@gmail.com"
         },
     ],
-    "require": {
-	    "yii2mod/yii2-enum": "*",
-	    "yii2mod/yii2-editable": "*",
-            "yii2mod/yii2-toggle-column": "*"
-    },
+  
     "autoload": {
         "psr-4": {
             "kravchukdim\\yii2seo\\": ""
