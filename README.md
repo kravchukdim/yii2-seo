@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist kravchukdim/yii2-seo "*"
+php composer.phar require --prefer-dist kravchukdim/yii2seo "*"
 ```
 
 or add
 
 ```json
-"kravchukdim/yii2-seo": "*"
+"kravchukdim/yii2seo": "*"
 ```
 
 to the require section of your composer.json.
