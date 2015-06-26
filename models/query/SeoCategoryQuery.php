@@ -6,17 +6,17 @@
  * Time: 13:08
  */
 
-namespace yii2mod\seo\models\query;
+namespace kravchukdim\yii2seo\models\query;
 
 use yii\db\ActiveQuery;
 
-use yii2mod\seo\models\SeoCategoryModel;
-use yii2mod\seo\models\enumerable\SeoCategoryStatus;
+use kravchukdim\yii2seo\models\SeoCategoryModel;
+use kravchukdim\yii2seo\models\enumerable\SeoCategoryStatus;
 
 /**
  * Class SeoCategoryQuery
  * @author Kravchuk Dmitry
- * @package yii2mod\seo\models\query
+ * @package kravchukdim\yii2seo\models\query
  */
 class SeoCategoryQuery extends ActiveQuery
 {

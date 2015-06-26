@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2mod\seo\components;
+namespace kravchukdim\yii2seo\components;
 
 use Yii;
 
@@ -10,7 +10,7 @@ use yii\base\Object;
 /**
  * Class SeoPage
  * @author Kravchuk Dmitry
- * @package yii2mod\seo\components
+ * @package kravchukdim\yii2seo\components
  */
 abstract class SeoPage extends Object implements SeoPageInterface
 {

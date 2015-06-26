@@ -1,16 +1,16 @@
 <?php
 
-namespace yii2mod\seo\models;
+namespace kravchukdim\yii2seo\models;
 
 use Yii;
 
-use yii2mod\seo\models\query\SeoQuery;
+use kravchukdim\yii2seo\models\query\SeoQuery;
 
 /**
  * Class SeoModel
  * This is the model class for table "Seo".
  * @author Kravchuk Dmitry
- * @package yii2mod\seo\models
+ * @package kravchukdim\yii2seo\models
  *
  * @property integer $id
  * @property string $url

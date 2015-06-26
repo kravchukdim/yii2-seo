@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2mod\seo\components;
+namespace kravchukdim\yii2seo\components;
 
 /**
  * Interface SeoPageInterface
  * @author Kravchuk Dmitry
- * @package yii2mod\seo\components
+ * @package kravchukdim\yii2seo\components
  */
 interface SeoPageInterface
 {

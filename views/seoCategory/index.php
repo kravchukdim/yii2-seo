@@ -5,7 +5,7 @@ use yii\grid\GridView;
 
 use yii2mod\editable\EditableColumn;
 use yii2mod\toggle\ToggleColumn;
-use yii2mod\seo\models\enumerable\SeoCategoryStatus;
+use kravchukdim\yii2seo\models\enumerable\SeoCategoryStatus;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\components\seo\models\search\SeoCategorySearch */

@@ -28,8 +28,8 @@ Usage
 'modules' => [
         'admin' => [
             'controllerMap' => [
-                'seo-module' => 'yii2mod\seo\controllers\SeoController',
-                'seo-category-module' => 'yii2mod\seo\controllers\SeoCategoryController'
+                'seo-module' => 'kravchukdim\yii2seo\controllers\SeoController',
+                'seo-category-module' => 'kravchukdim\yii2seo\controllers\SeoCategoryController'
             ],
         ],
     ],

@@ -4,8 +4,8 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
-use yii2mod\seo\models\enumerable\SeoStatus;
-use yii2mod\seo\models\SeoCategoryModel;
+use kravchukdim\yii2seo\models\enumerable\SeoStatus;
+use kravchukdim\yii2seo\models\SeoCategoryModel;
 
 /* @var $this yii\web\View */
 /* @var $model app\components\seo\models\SeoModel */

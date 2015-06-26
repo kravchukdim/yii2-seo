@@ -1,5 +1,5 @@
 <?php
-namespace yii2mod\seo\models\enumerable;
+namespace kravchukdim\yii2seo\models\enumerable;
 
 
 use yii2mod\enum\helpers\BaseEnum;
@@ -8,7 +8,7 @@ use yii2mod\enum\helpers\BaseEnum;
 /**
  * Class SeoStatus
  * @author  Kravchuk Dmitry
- * @package yii2mod\seo\models\enumerable
+ * @package kravchukdim\yii2seo\models\enumerable
  */
 class SeoStatus extends BaseEnum
 {

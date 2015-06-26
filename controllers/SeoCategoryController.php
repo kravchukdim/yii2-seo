@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2mod\seo\controllers;
+namespace kravchukdim\yii2seo\controllers;
 
 use Yii;
-use yii2mod\seo\models\SeoCategoryModel;
-use yii2mod\seo\models\search\SeoCategorySearch;
+use kravchukdim\yii2seo\models\SeoCategoryModel;
+use kravchukdim\yii2seo\models\search\SeoCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -15,7 +15,7 @@ use yii2mod\toggle\actions\ToggleAction;
  * Class SeoCategoryController
  * SeoController implements the CRUD actions for SeoCategoryModel model.
  * @author Kravchuk Dmitry
- * @package yii2mod\seo\controllers
+ * @package kravchukdim\yii2seo\controllers
  */
 class SeoCategoryController extends Controller
 {

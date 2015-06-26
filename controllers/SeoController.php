@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2mod\seo\controllers;
+namespace kravchukdim\yii2seo\controllers;
 
 use Yii;
-use yii2mod\seo\models\SeoModel;
-use yii2mod\seo\models\search\SeoSearch;
+use kravchukdim\yii2seo\models\SeoModel;
+use kravchukdim\yii2seo\models\search\SeoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -14,7 +14,7 @@ use yii2mod\editable\EditableAction;
  * Class SeoController
  * SeoController implements the CRUD actions for SeoModel model.
  * @author Kravchuk Dmitry
- * @package yii2mod\seo\controllers
+ * @package kravchukdim\yii2seo\controllers
  */
 class SeoController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2mod\seo\components;
+namespace kravchukdim\yii2seo\components;
 
 use Yii;
 use yii\base\Exception;
@@ -12,14 +12,14 @@ use yii2mod\models\SeoModel;
  * Class Seo
  * Set / show seo data
  * @author  Kravchuk Dmitry
- * @package yii2mod\seo\components
+ * @package kravchukdim\yii2seo\components
  */
 class Seo
 {
     private static $_instance = null;
 
     /**
-     * object yii2mod\seo\components\SeoPageInterface
+     * object kravchukdim\yii2seo\components\SeoPageInterface
      * @var null
      */
     private $seoPage = null;
@@ -48,7 +48,7 @@ class Seo
             $seoPage = Yii::createObject($config);
 
             if (!empty($seoPage)) {
-                if(!is_subclass_of($seoPage, 'yii2mod\seo\components\SeoPageInterface')) {
+                if(!is_subclass_of($seoPage, 'kravchukdim\yii2seo\components\SeoPageInterface')) {
                     throw new Exception('Error');
                 }
                 $this->seoPage = $seoPage;

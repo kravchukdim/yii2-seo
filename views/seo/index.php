@@ -7,8 +7,8 @@ use yii\helpers\Json;
 use yii\grid\GridView;
 
 use yii2mod\editable\EditableColumn;
-use yii2mod\seo\models\SeoCategoryModel;
-use yii2mod\seo\models\enumerable\SeoStatus;
+use kravchukdim\yii2seo\models\SeoCategoryModel;
+use kravchukdim\yii2seo\models\enumerable\SeoStatus;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\components\seo\models\search\SeoSearch */
