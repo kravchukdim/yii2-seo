@@ -6,7 +6,9 @@ use yii2mod\enum\helpers\BaseEnum;
 
 
 /**
+ * Class SeoStatus
  * @author  Kravchuk Dmitry
+ * @package yii2mod\seo\models\enumerable
  */
 class SeoStatus extends BaseEnum
 {

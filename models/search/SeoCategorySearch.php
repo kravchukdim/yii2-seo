@@ -8,7 +8,10 @@ use yii\data\ActiveDataProvider;
 use yii2mod\seo\models\SeoCategoryModel;
 
 /**
+ * Class SeoCategorySearch
  * SeoCategorySearch represents the model behind the search form about `app\components\seo\models\SeoCategoryModel`.
+ * @author Kravchuk Dmitry
+ * @package yii2mod\seo\models\search
  */
 class SeoCategorySearch extends SeoCategoryModel
 {

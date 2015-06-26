@@ -6,52 +6,56 @@ use Yii;
 use yii\base\Exception;
 use yii\helpers\Url;
 
+use yii2mod\models\SeoModel;
+
 /**
+ * Class Seo
+ * Set / show seo data
  * @author  Kravchuk Dmitry
+ * @package yii2mod\seo\components
  */
 class Seo
 {
     private static $_instance = null;
 
+    /**
+     * object yii2mod\seo\components\SeoPageInterface
+     * @var null
+     */
     private $seoPage = null;
 
+
+    /**
+     * Create $this->seoPage by current url
+     * @author Kravchuk Dmitry
+     * @throws Exception
+     */
     private function __construct()
     {
         // find seo model by url
         $url = Url::current();
-        // $seoModel = SeoModel::find()->byUrl($url);
-        // $class = $seoModel->class;
-        // $metaTitle = $seoModel->metaTitle;
-        // $metaKeyWords = $seoModel->metaKeyWords;
-        // $metaDescription = $seoModel->metaDescription;
-        // $pageContent = $seoModel->pageContent;
+         $seoModel = SeoModel::find()->byUrl($url)->active()->one();
+        if (!empty($seoModel)) {
 
-        $metaTitle = 'title';
-        $metaKeyWords = 'key';
-        $metaDescription = $url;
-        $pageContent = $url;
+            $config = [
+                'class' => $seoModel->class,
+                'metaTitle' => $seoModel->metaTitle,
+                'metaKeyWords' => $seoModel->metaKeyWords,
+                'metaDescription' => $seoModel->metaDescription,
+                'pageContent' => $seoModel->pageContent
+            ];
 
-        $config = [
-            'class' => 'app\components\seo\Seo1Page',
-            'metaTitle' => $metaTitle,
-            'metaKeyWords' => $metaKeyWords,
-            'metaDescription' => $metaDescription,
-            'pageContent' => $pageContent
-        ];
+            $seoPage = Yii::createObject($config);
 
-        $seoPage = Yii::createObject($config);
-
-        if (empty($seoPage)) {
-            throw new Exception('Error');
+            if (!empty($seoPage)) {
+                if(!is_subclass_of($seoPage, 'yii2mod\seo\components\SeoPageInterface')) {
+                    throw new Exception('Error');
+                }
+                $this->seoPage = $seoPage;
+            }
         }
-        $this->seoPage = $seoPage;
 
     }
-
-    protected function __clone() {
-
-    }
-
 
     static public function getInstance()
     {
@@ -62,29 +66,78 @@ class Seo
         return self::$_instance;
     }
 
+    protected function __clone() {}
+
+    /**
+     * @author Kravchuk Dmitry
+     *
+     * @return mixed
+     */
+    static public function getSeoPage()
+    {
+        $seoPage = self::getInstance()->seoPage;
+        return empty($seoPage)? false : $seoPage;
+    }
+
+    /**
+     * Set title in current view
+     * @author Kravchuk Dmitry
+     *
+     * @param array $options
+     *
+     * @return mixed
+     */
     static public function setTitle($options = [])
     {
-        return self::getInstance()->seoPage->setTitle($options);
+        return false !== self::getSeoPage()? self::getInstance()->seoPage->setTitle($options) : false;
     }
 
+    /**
+     * @author Kravchuk Dmitry
+     *
+     * @return mixed
+     */
     static public function getTitle()
     {
-        return self::getInstance()->seoPage->getMetaTitle();
+        return false !== self::getSeoPage()? self::getInstance()->seoPage->getMetaTitle() : false;
     }
 
+    /**
+     * Set meta tags into current view
+     * @author Kravchuk Dmitry
+     *
+     * @param bool $keyWord is show meta keywords
+     * @param bool $description is show meta description
+     * @param array $options
+     *
+     * @return mixed
+     */
     static public function metaTags($keyWord = true, $description = true, $options = [])
     {
-        return self::getInstance()->seoPage->setHeaderMetaTags($keyWord, $description, $options);
+        return false !== self::getSeoPage()? self::getInstance()->seoPage->setHeaderMetaTags($keyWord, $description, $options) : false;
     }
 
+    /**
+     * echo page content
+     * @author Kravchuk Dmitry
+     *
+     * @param array $options
+     */
     static public function setPageContentTag($options = [])
     {
-        echo self::getInstance()->seoPage->getPageContentTag($options);
+        echo false !== self::getSeoPage()? self::getInstance()->seoPage->getPageContentTag($options) : false;
     }
 
+    /**
+     * @author Kravchuk Dmitry
+     *
+     * @param array $options
+     *
+     * @return mixed
+     */
     static public function getPageContentTag($options = [])
     {
-        return self::getInstance()->seoPage->getPageContentTag($options);
+        return false !== self::getSeoPage()? self::getInstance()->seoPage->getPageContentTag($options) : false;
     }
 
 

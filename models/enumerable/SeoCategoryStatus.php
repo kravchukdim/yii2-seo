@@ -4,9 +4,10 @@ namespace yii2mod\seo\models\enumerable;
 
 use yii2mod\enum\helpers\BaseEnum;
 
-
 /**
- * @author  Kravchuk Dmitry
+ * Class SeoCategoryStatus
+ * @author Kravchuk Dmitry
+ * @package yii2mod\seo\models\enumerable
  */
 class SeoCategoryStatus extends BaseEnum
 {

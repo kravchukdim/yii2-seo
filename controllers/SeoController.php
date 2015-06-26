@@ -10,9 +10,11 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii2mod\editable\EditableAction;
 
-
 /**
+ * Class SeoController
  * SeoController implements the CRUD actions for SeoModel model.
+ * @author Kravchuk Dmitry
+ * @package yii2mod\seo\controllers
  */
 class SeoController extends Controller
 {

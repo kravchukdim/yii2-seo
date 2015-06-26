@@ -8,27 +8,50 @@ use yii\base\Object;
 
 
 /**
- * Created by PhpStorm.
- * User: kravchuk
- * Date: 18.06.15
- * Time: 9:18
+ * Class SeoPage
+ * @author Kravchuk Dmitry
+ * @package yii2mod\seo\components
  */
-class SeoPage extends Object implements SeoPageInterface
+abstract class SeoPage extends Object implements SeoPageInterface
 {
-
+    /**
+     * @var string
+     */
     public $metaTitle = '';
+
+    /**
+     * @var string
+     */
     public $metaKeyWords = '';
+
+    /**
+     * @var string
+     */
     public $metaDescription = '';
+
+    /**
+     * @var string
+     */
     public $pageContent = '';
 
-    public $templatePageContent = '<div class="seo-description">{content}</div>';
+    /**
+     * @var string
+     */
+    public $templatePageContent = '<div>{content}</div>';
 
-
+    /**
+     * Get current view
+     * @return mixed
+     */
     protected function getView()
     {
         return Yii::$app->controller->view;
     }
 
+    /**
+     * @param array $options
+     * @return string
+     */
     public function setTitle($options = [])
     {
         $view = $this->getView();
@@ -36,6 +59,11 @@ class SeoPage extends Object implements SeoPageInterface
         return $view->title;
     }
 
+    /**
+     * @param bool $keyWord
+     * @param bool $description
+     * @param array $options
+     */
     public function setHeaderMetaTags($keyWord = true, $description = true, $options = [])
     {
         if (false !== $keyWord) {
@@ -46,6 +74,9 @@ class SeoPage extends Object implements SeoPageInterface
         }
     }
 
+    /**
+     * @param array $options
+     */
     public function setKeyWordsMeta($options = [])
     {
         if (!empty($this->metaKeywords)) {
@@ -54,6 +85,9 @@ class SeoPage extends Object implements SeoPageInterface
         }
     }
 
+    /**
+     * @param array $options
+     */
     public function setDescriptionMeta($options = [])
     {
         if (!empty($this->metaDescription)) {
@@ -62,26 +96,42 @@ class SeoPage extends Object implements SeoPageInterface
         }
     }
 
+    /**
+     * @param array $options
+     * @return mixed|string
+     */
     public function getPageContentTag($options = [])
     {
         return !empty($this->templatePageContent) ? str_replace('{content}', $this->pageContent, $this->templatePageContent) : $this->pageContent;
     }
 
+    /**
+     * @return string
+     */
     public function getPageContent()
     {
         return $this->pageContent;
     }
 
+    /**
+     * @return string
+     */
     public function getMetaTitle()
     {
         return $this->metaTitle;
     }
 
+    /**
+     * @return string
+     */
     public function getMetaKeyWords()
     {
         return $this->metaKeyWords;
     }
 
+    /**
+     * @return string
+     */
     public function getMetaDescription()
     {
         return $this->metaDescription;

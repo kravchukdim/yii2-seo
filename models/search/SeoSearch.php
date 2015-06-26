@@ -7,8 +7,12 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use yii2mod\seo\models\SeoModel;
 
+
 /**
+ * Class SeoSearch
  * SeoSearch represents the model behind the search form about `app\components\seo\models\SeoModel`.
+ * @author Kravchuk Dmitry
+ * @package yii2mod\seo\models\search
  */
 class SeoSearch extends SeoModel
 {

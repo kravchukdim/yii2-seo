@@ -10,15 +10,15 @@ namespace yii2mod\seo\models\query;
 
 use yii\db\ActiveQuery;
 
-use yii2mod\seo\models\SeoCategoryModel;
-use yii2mod\seo\models\enumerable\SeoCategoryStatus;
+use yii2mod\seo\models\SeoModel;
+use yii2mod\seo\models\enumerable\SeoStatus;
 
 /**
- * Class SeoCategoryQuery
+ * Class SeoQuery
  * @author Kravchuk Dmitry
  * @package yii2mod\seo\models\query
  */
-class SeoCategoryQuery extends ActiveQuery
+class SeoQuery extends ActiveQuery
 {
     /**
      * Find by status active and order
@@ -26,8 +26,7 @@ class SeoCategoryQuery extends ActiveQuery
      */
     public function active()
     {
-        $this->byStatus(SeoCategoryStatus::ENABLED);
-        $this->order();
+        $this->byStatus([SeoStatus::ENABLED, SeoStatus::CHANGED, SeoStatus::NEW_SEO]);
         return $this;
     }
 
@@ -40,7 +39,7 @@ class SeoCategoryQuery extends ActiveQuery
      */
     public function byStatus($status)
     {
-        $tableColumn = SeoCategoryModel::tableName() . '.status';
+        $tableColumn = SeoModel::tableName() . '.status';
 
         $this->andWhere(['in', $tableColumn, (array) $status]);
 
@@ -57,10 +56,28 @@ class SeoCategoryQuery extends ActiveQuery
      */
     public function byName($name)
     {
-        $tableColumn = SeoCategoryModel::tableName() . '.name';
-        $aliasColumn = ':' . SeoCategoryModel::tableName() . 'Name';
+        $tableColumn = SeoModel::tableName() . '.name';
+        $aliasColumn = ':' . SeoModel::tableName() . 'Name';
 
         $this->andWhere($tableColumn . ' = ' . $aliasColumn, [$aliasColumn => $name]);
+
+        return $this;
+    }
+
+    /**
+     * Find by url
+     * @author Kravchuk Dmitry
+     *
+     * @param string $url
+     *
+     * @return $this
+     */
+    public function byUrl($url)
+    {
+        $tableColumn = SeoModel::tableName() . '.url';
+        $aliasColumn = ':' . SeoModel::tableName() . 'Url';
+
+        $this->andWhere($tableColumn . ' = ' . $aliasColumn, [$aliasColumn => $url]);
 
         return $this;
     }
@@ -72,7 +89,7 @@ class SeoCategoryQuery extends ActiveQuery
      */
     public function order()
     {
-        $this->orderBy('position, name');
+        $this->orderBy('name');
 
         return $this;
     }

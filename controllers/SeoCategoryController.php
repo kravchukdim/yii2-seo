@@ -12,7 +12,10 @@ use yii2mod\editable\EditableAction;
 use yii2mod\toggle\actions\ToggleAction;
 
 /**
+ * Class SeoCategoryController
  * SeoController implements the CRUD actions for SeoCategoryModel model.
+ * @author Kravchuk Dmitry
+ * @package yii2mod\seo\controllers
  */
 class SeoCategoryController extends Controller
 {

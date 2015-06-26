@@ -3,20 +3,38 @@
 namespace yii2mod\seo\components;
 
 /**
- * Created by PhpStorm.
- * User: kravchuk
- * Date: 18.06.15
- * Time: 9:15
+ * Interface SeoPageInterface
+ * @author Kravchuk Dmitry
+ * @package yii2mod\seo\components
  */
-
 interface SeoPageInterface
 {
+    /**
+     * Setter page title
+     * @param array $options
+     * @return mixed
+     */
     public function setTitle($options = []);
 
+    /**
+     * Getter page title
+     * @return mixed
+     */
     public function getMetaTitle();
 
+    /**
+     * Setter meta tags
+     * @param bool $keyWord
+     * @param bool $description
+     * @param array $options
+     */
     public function setHeaderMetaTags($keyWord = true, $description = true, $options = []);
 
+    /**
+     * Getter page content
+     * @param array $options
+     * @return mixed
+     */
     public function getPageContentTag($options = []);
 
 }

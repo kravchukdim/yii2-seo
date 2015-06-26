@@ -4,8 +4,13 @@ namespace yii2mod\seo\models;
 
 use Yii;
 
+use yii2mod\seo\models\query\SeoQuery;
+
 /**
+ * Class SeoModel
  * This is the model class for table "Seo".
+ * @author Kravchuk Dmitry
+ * @package yii2mod\seo\models
  *
  * @property integer $id
  * @property string $url
@@ -67,6 +72,14 @@ class SeoModel extends \yii\db\ActiveRecord
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
         ];
+    }
+
+    /**
+     * @return RegionQuery
+     */
+    public static function find()
+    {
+        return new SeoQuery(get_called_class());
     }
 
     /**

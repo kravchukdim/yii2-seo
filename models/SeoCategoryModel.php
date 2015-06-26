@@ -8,7 +8,10 @@ use yii\behaviors\TimestampBehavior;
 use yii2mod\seo\models\query\SeoCategoryQuery;
 
 /**
+ * Class SeoCategoryModel
  * This is the model class for table "SeoCategory".
+ * @author Kravchuk Dmitry
+ * @package yii2mod\seo\models
  *
  * @property integer $id
  * @property string $name
@@ -18,7 +21,7 @@ use yii2mod\seo\models\query\SeoCategoryQuery;
  * @property integer $createdAt
  * @property integer $updatedAt
  *
- * @property Seo[] $seos
+ * @property Seo[] $seo
  */
 class SeoCategoryModel extends ActiveRecord
 {
