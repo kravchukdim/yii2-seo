@@ -1,9 +1,9 @@
 {
-    "name": "yii2mod/yii2-cms",
+    "name": "kravchukdim/yii2seo",
     "description": "Yii2 SEO extension",
     "type": "yii2-extension",
     "keywords": ["yii2", "extension"],
-    "license": "Apache-2.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Dmitry Kravchuk",
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "yii2mod\\seo\\": ""
+            "kravchukdim\\yii2seo\\": ""
         }
     }
 }
