@@ -40,17 +40,3 @@ Usage
         
     ],
 ```
-
-```php
-    /**
-     * @return array
-     */
-    public function actions()
-    {
-        return [
-            'page' => [
-                'class' => 'yii2mod\cms\actions\PageAction',
-            ],
-        ];
-    }
-```
