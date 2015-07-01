@@ -1,5 +1,5 @@
 
-CMS Extension
+SEO Extension
 ======================================
 
 Installation
