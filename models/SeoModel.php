@@ -20,6 +20,10 @@ use kravchukdim\yii2seo\models\query\SeoQuery;
  * @property string $metaTitle
  * @property string $metaDescription
  * @property string $metaKeywords
+ * @property string $module
+ * @property string $controller
+ * @property string $action
+ *
  * @property integer $status
  * @property integer $categoryId
  * @property string $seoPageClass
@@ -48,7 +52,7 @@ class SeoModel extends \yii\db\ActiveRecord
             ['seoPageClass', 'default', 'value' => 'app\components\seo\Seo1Page'],
             [['status', 'categoryId', 'createdAt', 'updatedAt'], 'integer'],
             [['url', 'name','seoPageClass', 'categoryId', 'status'], 'required'],
-            [['url', 'name', 'seoPageClass'], 'string', 'max' => 255]
+            [['url', 'name', 'seoPageClass', 'module', 'controller', 'action'], 'string', 'max' => 255]
         ];
     }
 
@@ -60,6 +64,10 @@ class SeoModel extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'url' => Yii::t('app', 'Url'),
+            'module' => Yii::t('app', 'Module'),
+            'controller' => Yii::t('app', 'Controller'),
+            'action' => Yii::t('app', 'Action'),
+
             'name' => Yii::t('app', 'Name'),
             'comment' => Yii::t('app', 'Comment'),
             'pageContent' => Yii::t('app', 'Page Content'),
