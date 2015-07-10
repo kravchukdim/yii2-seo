@@ -10,12 +10,7 @@
             "email": "k.dima.dev@gmail.com"
         }
     ],
-    "require": {
-        "kartik-v/yii2-widget-select2": "*",
-        "yii2mod/yii2-enum": "dev-master",
-        "yii2mod/yii2-editable": "*",
-        "yii2mod/yii2-toggle-column": "*"
-    },
+   
     "autoload": {
         "psr-4": {
             "kravchukdim\\seo\\": ""
