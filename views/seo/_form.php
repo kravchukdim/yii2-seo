@@ -4,8 +4,13 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
-use kravchukdim\yii2seo\models\enumerable\SeoStatus;
-use kravchukdim\yii2seo\models\SeoCategoryModel;
+use kartik\select2\Select2;
+
+use kravchukdim\seo\models\enumerable\SeoStatus;
+use kravchukdim\seo\models\SeoCategoryModel;
+use kravchukdim\seo\components\SeoHelper;
+
+
 
 /* @var $this yii\web\View */
 /* @var $model app\components\seo\models\SeoModel */
@@ -17,6 +22,14 @@ use kravchukdim\yii2seo\models\SeoCategoryModel;
     <?php $form = ActiveForm::begin(); ?>
 
     <?php echo $form->field($model, 'url')->textInput(['maxlength' => 255]) ?>
+
+    <?php echo $form->field($model, 'urlRule')->widget(Select2::classname(), [
+        'data' => SeoHelper::getRoutersList(),
+        'options' => ['placeholder' => 'Select a url rule'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]); ?>
 
     <?php echo $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
 

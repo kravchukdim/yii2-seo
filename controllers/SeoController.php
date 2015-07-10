@@ -1,20 +1,21 @@
 <?php
 
-namespace kravchukdim\yii2seo\controllers;
+namespace kravchukdim\seo\controllers;
 
 use Yii;
-use kravchukdim\yii2seo\models\SeoModel;
-use kravchukdim\yii2seo\models\search\SeoSearch;
+use kravchukdim\seo\models\SeoModel;
+use kravchukdim\seo\models\search\SeoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii2mod\editable\EditableAction;
 
+
 /**
  * Class SeoController
  * SeoController implements the CRUD actions for SeoModel model.
  * @author Kravchuk Dmitry
- * @package kravchukdim\yii2seo\controllers
+ * @package kravchukdim\seo\controllers
  */
 class SeoController extends Controller
 {
@@ -69,7 +70,8 @@ class SeoController extends Controller
         $searchModel = new SeoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('@vendor/yii2mod/yii2-seo/views/seo/index', [
+//        return $this->render('@vendor/kravchukdim/seo/views/seo/index', [
+        return $this->render('@vendor/kravchukdim/seo/views/seo/index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -89,7 +91,8 @@ class SeoController extends Controller
             return $this->redirect(['index']);
         }
 
-        return $this->render('@vendor/yii2mod/yii2-seo/views/seo/create', [
+//        return $this->render('@vendor/kravchukdim/seo/views/seo/create', [
+        return $this->render('@vendor/kravchukdim/seo/views/seo/create', [
             'model' => $model,
         ]);
 
@@ -110,7 +113,8 @@ class SeoController extends Controller
             return $this->redirect(['index']);
         }
 
-        return $this->render('@vendor/yii2mod/yii2-seo/views/seo/update', [
+//        return $this->render('@vendor/kravchukdim/seo/views/seo/update', [
+        return $this->render('@vendor/kravchukdim/seo/views/seo/update', [
             'model' => $model,
         ]);
 

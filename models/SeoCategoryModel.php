@@ -1,20 +1,25 @@
 <?php
 
-namespace kravchukdim\yii2seo\models;
+namespace kravchukdim\seo\models;
 
 use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
-use kravchukdim\yii2seo\models\query\SeoCategoryQuery;
+use kravchukdim\seo\models\query\SeoCategoryQuery;
 
 /**
  * Class SeoCategoryModel
  * This is the model class for table "SeoCategory".
  * @author Kravchuk Dmitry
- * @package kravchukdim\yii2seo\models
+ *
+ * @package kravchukdim\seo\models
  *
  * @property integer $id
  * @property string $name
+ * @property string $pageContent
+ * @property string $metaTitle
+ * @property string $metaDescription
+ * @property string $metaKeywords
  * @property string $comment
  * @property integer $status
  * @property integer $position
@@ -39,7 +44,7 @@ class SeoCategoryModel extends ActiveRecord
     public function rules()
     {
         return [
-            [['comment'], 'string'],
+            [['comment', 'pageContent', 'metaTitle', 'metaDescription', 'metaKeywords'], 'string'],
             [['status', 'name'], 'required'],
             [['status', 'position', 'createdAt', 'updatedAt'], 'integer'],
             [['name'], 'string', 'max' => 255]
@@ -54,6 +59,10 @@ class SeoCategoryModel extends ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
+            'pageContent' => Yii::t('app', 'Page Content'),
+            'metaTitle' => Yii::t('app', 'Meta Title'),
+            'metaDescription' => Yii::t('app', 'Meta Description'),
+            'metaKeywords' => Yii::t('app', 'Meta Keywords'),
             'comment' => Yii::t('app', 'Comment'),
             'status' => Yii::t('app', 'Status'),
             'position' => Yii::t('app', 'Position'),
@@ -85,7 +94,7 @@ class SeoCategoryModel extends ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSeos()
+    public function getSeo()
     {
         return $this->hasMany(SeoModel::className(), ['categoryId' => 'id']);
     }

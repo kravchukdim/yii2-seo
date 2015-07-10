@@ -1,18 +1,19 @@
 <?php
 
-namespace kravchukdim\yii2seo\models\search;
+namespace kravchukdim\seo\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use kravchukdim\yii2seo\models\SeoModel;
+use kravchukdim\seo\models\SeoModel;
 
 
 /**
  * Class SeoSearch
  * SeoSearch represents the model behind the search form about `app\components\seo\models\SeoModel`.
  * @author Kravchuk Dmitry
- * @package kravchukdim\yii2seo\models\search
+ *
+ * @package kravchukdim\seo\models\search
  */
 class SeoSearch extends SeoModel
 {
@@ -23,7 +24,7 @@ class SeoSearch extends SeoModel
     {
         return [
             [['id', 'status', 'categoryId', 'createdAt', 'updatedAt'], 'integer'],
-            [['url', 'name', 'comment', 'pageContent', 'metaTitle', 'metaDescription', 'metaKeywords', 'seoPageClass'], 'safe'],
+            [['url', 'name', 'comment', 'pageContent', 'metaTitle', 'metaDescription', 'metaKeywords', 'seoPageClass', 'urlRule'], 'safe'],
         ];
     }
 
@@ -61,6 +62,7 @@ class SeoSearch extends SeoModel
         ]);
 
         $query->andFilterWhere(['like', 'url', $this->url])
+            ->andFilterWhere(['like', 'urlRule', $this->urlRule])
             ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'comment', $this->comment])
             ->andFilterWhere(['like', 'pageContent', $this->pageContent])
@@ -68,6 +70,7 @@ class SeoSearch extends SeoModel
             ->andFilterWhere(['like', 'metaDescription', $this->metaDescription])
             ->andFilterWhere(['like', 'metaKeywords', $this->metaKeywords])
             ->andFilterWhere(['like', 'seoPageClass', $this->seoPageClass]);
+
 
         return $dataProvider;
     }

@@ -1,16 +1,19 @@
 <?php
 
-namespace kravchukdim\yii2seo\components;
+namespace kravchukdim\seo\components;
 
 
-use ReflectionClass;
+use Yii;
 use yii\caching\TagDependency;
 use yii\helpers\Inflector;
-use Yii;
+use ReflectionClass;
+
 
 /**
  * Class SeoHelper
- * @package kravchukdim\yii2seo\components
+ * @author Kravchuk Dmitry
+ *
+ * @package kravchukdim\seo\components
  */
 class SeoHelper
 {
@@ -19,12 +22,16 @@ class SeoHelper
      */
     const FILE_GROUP = 'file';
 
-    public static function getControllers($refresh = false)
+
+    public static function getRoutersList($refresh = false)
     {
         $key = static::buildKey(__METHOD__);
         if ($refresh || ($cache = Yii::$app->getCache()) === null || ($result = $cache->get($key)) === false) {
             $result = [];
-            self::getControllerList(Yii::$app, $result);
+            $routes = self::getRoutes();
+            foreach ($routes as $route) {
+                $result[$route] = $route;
+            }
             if ($cache !== null) {
                 $cache->set($key, $result, 0, new TagDependency([
                     'tags' => static::getGroup(static::FILE_GROUP)
@@ -32,16 +39,6 @@ class SeoHelper
             }
         }
         return $result;
-    }
-
-    private function getControllerList($module, &$result)
-    {
-        foreach ($module->getModules() as $id => $child) {
-            if (($child = $module->getModule($id)) !== null) {
-                self::getRouteRecursive($child, $result);
-            }
-        }
-        $result[] = ($module->uniqueId === '' ? '' :  $module->uniqueId);
     }
 
     /**

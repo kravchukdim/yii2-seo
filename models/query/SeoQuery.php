@@ -6,17 +6,17 @@
  * Time: 13:08
  */
 
-namespace kravchukdim\yii2seo\models\query;
+namespace kravchukdim\seo\models\query;
 
 use yii\db\ActiveQuery;
 
-use kravchukdim\yii2seo\models\SeoModel;
-use kravchukdim\yii2seo\models\enumerable\SeoStatus;
+use kravchukdim\seo\models\SeoModel;
+use kravchukdim\seo\models\enumerable\SeoStatus;
 
 /**
  * Class SeoQuery
  * @author Kravchuk Dmitry
- * @package kravchukdim\yii2seo\models\query
+ * @package kravchukdim\seo\models\query
  */
 class SeoQuery extends ActiveQuery
 {
@@ -24,9 +24,9 @@ class SeoQuery extends ActiveQuery
      * Find by status active and order
      * @author Kravchuk Dmitry
      */
-    public function active()
+    public function active($tableAlias = null)
     {
-        $this->byStatus([SeoStatus::ENABLED, SeoStatus::CHANGED, SeoStatus::NEW_SEO]);
+        $this->byStatus([SeoStatus::ENABLED, SeoStatus::CHANGED, SeoStatus::NEW_SEO], $tableAlias);
         return $this;
     }
 
@@ -37,11 +37,14 @@ class SeoQuery extends ActiveQuery
      * @param $status
      * @return $this
      */
-    public function byStatus($status)
+    public function byStatus($status, $tableAlias = null)
     {
-        $tableColumn = SeoModel::tableName() . '.status';
+        if (empty($tableAlias)) {
+            $tableAlias = SeoModel::tableName();
+        }
+        $tableColumn = $tableAlias . '.status';
 
-        $this->andWhere(['in', $tableColumn, (array) $status]);
+        $this->andWhere(['in', $tableColumn, (array)$status]);
 
         return $this;
     }
@@ -78,6 +81,45 @@ class SeoQuery extends ActiveQuery
         $aliasColumn = ':' . SeoModel::tableName() . 'Url';
 
         $this->andWhere($tableColumn . ' = ' . $aliasColumn, [$aliasColumn => $url]);
+
+        return $this;
+    }
+
+    /**
+     * Find by UrlRule use table alias
+     * @author Kravchuk Dmitry
+     *
+     * @param string $urlRule
+     * @param string $tableAlias
+     *
+     * @return $this
+     */
+    public function byUrlRuleWithTableAlias($urlRule, $tableAlias)
+    {
+        $tableColumn = $tableAlias . '.urlRule';
+        $aliasColumn = ':' . $tableAlias . 'UrlRule';
+
+        $this->from(SeoModel::tableName() . ' ' . $tableAlias)
+        ->andWhere($tableColumn . ' = ' . $aliasColumn, [$aliasColumn => $urlRule])
+        ->active($tableAlias);
+
+        return $this;
+    }
+
+    /**
+     * Find by urlRule
+     * @author Kravchuk Dmitry
+     *
+     * @param string $urlRule
+     *
+     * @return $this
+     */
+    public function byUrlRule($urlRule)
+    {
+        $tableColumn = SeoModel::tableName() . '.urlRule';
+        $aliasColumn = ':' . SeoModel::tableName() . 'UrlRule';
+
+        $this->andWhere($tableColumn . ' = ' . $aliasColumn, [$aliasColumn => $urlRule]);
 
         return $this;
     }

@@ -1,17 +1,18 @@
 <?php
 
-namespace kravchukdim\yii2seo\models\search;
+namespace kravchukdim\seo\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use kravchukdim\yii2seo\models\SeoCategoryModel;
+use kravchukdim\seo\models\SeoCategoryModel;
 
 /**
  * Class SeoCategorySearch
  * SeoCategorySearch represents the model behind the search form about `app\components\seo\models\SeoCategoryModel`.
  * @author Kravchuk Dmitry
- * @package kravchukdim\yii2seo\models\search
+ *
+ * @package kravchukdim\seo\models\search
  */
 class SeoCategorySearch extends SeoCategoryModel
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace kravchukdim\yii2seo\components;
+namespace kravchukdim\seo\components;
 
 /**
  * Interface SeoPageInterface
  * @author Kravchuk Dmitry
- * @package kravchukdim\yii2seo\components
+ * @package kravchukdim\seo\components
  */
 interface SeoPageInterface
 {
@@ -18,9 +18,10 @@ interface SeoPageInterface
 
     /**
      * Getter page title
+     * @param array $options
      * @return mixed
      */
-    public function getMetaTitle();
+    public function getMetaTitle($options = []);
 
     /**
      * Setter meta tags

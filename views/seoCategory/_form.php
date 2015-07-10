@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-use kravchukdim\yii2seo\models\enumerable\SeoCategoryStatus;
+use kravchukdim\seo\models\enumerable\SeoCategoryStatus;
 
 /* @var $this yii\web\View */
 /* @var $model app\components\seo\models\SeoCategoryModel */
@@ -15,6 +15,14 @@ use kravchukdim\yii2seo\models\enumerable\SeoCategoryStatus;
     <?php $form = ActiveForm::begin(); ?>
 
     <?php echo $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
+
+    <?php echo $form->field($model, 'pageContent')->textarea(['rows' => 6]) ?>
+
+    <?php echo $form->field($model, 'metaTitle')->textarea(['rows' => 6]) ?>
+
+    <?php echo $form->field($model, 'metaDescription')->textarea(['rows' => 6]) ?>
+
+    <?php echo $form->field($model, 'metaKeywords')->textarea(['rows' => 6]) ?>
 
     <?php echo $form->field($model, 'status')->dropDownList(SeoCategoryStatus::$list); ?>
 

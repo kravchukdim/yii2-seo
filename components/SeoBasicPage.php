@@ -1,6 +1,6 @@
 <?php
 
-namespace kravchukdim\yii2seo\components;
+namespace kravchukdim\seo\components;
 
 use Yii;
 use yii\base\Oject;
@@ -9,7 +9,8 @@ use yii\base\Oject;
 /**
  * Class SeoBasicPage
  * @author Kravchuk Dmitry
- * @package kravchukdim\yii2seo\components
+ *
+ * @package kravchukdim\seo\components
  */
 class SeoBasicPage extends SeoPage
 {
@@ -19,18 +20,5 @@ class SeoBasicPage extends SeoPage
      * @var string
      */
     public $templatePageContent = '<div class="seo-description">{content}</div>';
-
-
-    /**
-     * Function for set meta tags
-     * @author Kravchuk Dmitry
-     * @param boolean $keyWord
-     * @param boolean $description
-     * @param array $options
-     */
-    public function setHeaderMetaTags($keyWord = true, $description = true, $options = [])
-    {
-        parent::setHeaderMetaTags(true, true);
-    }
 
 }

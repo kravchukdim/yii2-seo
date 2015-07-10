@@ -5,7 +5,7 @@ use yii\grid\GridView;
 
 use yii2mod\editable\EditableColumn;
 use yii2mod\toggle\ToggleColumn;
-use kravchukdim\yii2seo\models\enumerable\SeoCategoryStatus;
+use kravchukdim\seo\models\enumerable\SeoCategoryStatus;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\components\seo\models\search\SeoCategorySearch */
@@ -35,14 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'name',
                 'url' => ['edit-category-name'],
             ],
-            'comment:ntext',
             [
                 'class' => ToggleColumn::className(),
                 'attribute' => 'status',
                 'filter' => SeoCategoryStatus::listData(),
                 'filterInputOptions' => ['prompt' => 'Select Status', 'class' => 'form-control'],
             ],
-            'position',
+
+//            'comment:ntext',
+//            'position',
             // 'createdAt',
             // 'updatedAt',
             [

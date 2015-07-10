@@ -1,25 +1,25 @@
 <?php
 
-namespace kravchukdim\yii2seo\components;
+namespace kravchukdim\seo\components;
 
 use Yii;
 use yii\base\Exception;
 use yii\helpers\Url;
 
-use yii2mod\models\SeoModel;
+use kravchukdim\seo\models\SeoModel;
 
 /**
  * Class Seo
  * Set / show seo data
  * @author  Kravchuk Dmitry
- * @package kravchukdim\yii2seo\components
+ * @package kravchukdim\seo\components
  */
 class Seo
 {
     private static $_instance = null;
 
     /**
-     * object kravchukdim\yii2seo\components\SeoPageInterface
+     * object kravchukdim\seo\components\SeoPageInterface
      * @var null
      */
     private $seoPage = null;
@@ -34,22 +34,37 @@ class Seo
     {
         // find seo model by url
         $url = Url::current();
-         $seoModel = SeoModel::find()->byUrl($url)->active()->one();
-        if (!empty($seoModel)) {
+        $actionId = Yii::$app->controller->action->uniqueId;
 
+        $i = 1;
+        $seoModelQuery = SeoModel::find()->select('*')->byUrl($url)->active();
+        $seoModelQuery->union(SeoModel::find()->byUrlRuleWithTableAlias('/' . trim($actionId, '/'), 'rule' . $i), true);
+        $actionIdArray = explode('/', $actionId);
+        if (is_array($actionIdArray)) {
+            do {
+                ++$i;
+                array_pop($actionIdArray);
+                $urlRule = empty($actionIdArray)? '/*' : '/' . implode('/', $actionIdArray) . '/*';
+                $unionQuery = SeoModel::find()->byUrlRuleWithTableAlias($urlRule, 'rule' . $i);
+                $seoModelQuery->union($unionQuery, true);
+            } while(!empty($actionIdArray));
+        }
+        $seoModel = $seoModelQuery->one();
+        if (!empty($seoModel)) {
+            $category = $seoModel->category;
             $config = [
-                'class' => $seoModel->class,
-                'metaTitle' => $seoModel->metaTitle,
-                'metaKeyWords' => $seoModel->metaKeyWords,
-                'metaDescription' => $seoModel->metaDescription,
-                'pageContent' => $seoModel->pageContent
+                'class' => $seoModel->seoPageClass,
+                'metaTitle'       => (!empty($category) && empty($seoModel->metaTitle))?       $category->metaTitle       : $seoModel->metaTitle,
+                'metaKeyWords'    => (!empty($category) && empty($seoModel->metaKeywords))?    $category->metaKeywords    : $seoModel->metaKeywords,
+                'metaDescription' => (!empty($category) && empty($seoModel->metaDescription))? $category->metaDescription : $seoModel->metaDescription,
+                'pageContent'     => (!empty($category) && empty($seoModel->pageContent))?     $category->pageContent     : $seoModel->pageContent
             ];
 
             $seoPage = Yii::createObject($config);
 
             if (!empty($seoPage)) {
-                if(!is_subclass_of($seoPage, 'kravchukdim\yii2seo\components\SeoPageInterface')) {
-                    throw new Exception('Error');
+                if(!is_subclass_of($seoPage, 'kravchukdim\seo\components\SeoPageInterface')) {
+                    throw new Exception('Error, invalid seo page class');
                 }
                 $this->seoPage = $seoPage;
             }
@@ -97,9 +112,9 @@ class Seo
      *
      * @return mixed
      */
-    static public function getTitle()
+    static public function getTitle($options = [])
     {
-        return false !== self::getSeoPage()? self::getInstance()->seoPage->getMetaTitle() : false;
+        return false !== self::getSeoPage()? self::getInstance()->seoPage->getMetaTitle($options) : false;
     }
 
     /**
@@ -112,7 +127,7 @@ class Seo
      *
      * @return mixed
      */
-    static public function metaTags($keyWord = true, $description = true, $options = [])
+    static public function setMetaTags($keyWord = true, $description = true, $options = [])
     {
         return false !== self::getSeoPage()? self::getInstance()->seoPage->setHeaderMetaTags($keyWord, $description, $options) : false;
     }

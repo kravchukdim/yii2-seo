@@ -1,16 +1,17 @@
 <?php
 
-namespace kravchukdim\yii2seo\models;
+namespace kravchukdim\seo\models;
 
 use Yii;
 
-use kravchukdim\yii2seo\models\query\SeoQuery;
+use kravchukdim\seo\models\query\SeoQuery;
 
 /**
  * Class SeoModel
  * This is the model class for table "Seo".
  * @author Kravchuk Dmitry
- * @package kravchukdim\yii2seo\models
+ *
+ * @package kravchukdim\seo\models
  *
  * @property integer $id
  * @property string $url
@@ -20,9 +21,7 @@ use kravchukdim\yii2seo\models\query\SeoQuery;
  * @property string $metaTitle
  * @property string $metaDescription
  * @property string $metaKeywords
- * @property string $module
- * @property string $controller
- * @property string $action
+ * @property string $urlRule
  *
  * @property integer $status
  * @property integer $categoryId
@@ -48,11 +47,11 @@ class SeoModel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['comment', 'pageContent', 'metaTitle', 'metaDescription', 'metaKeywords'], 'string'],
-            ['seoPageClass', 'default', 'value' => 'app\components\seo\Seo1Page'],
+            [['comment', 'pageContent', 'metaTitle', 'metaDescription', 'metaKeywords', 'urlRule'], 'string'],
+            ['seoPageClass', 'default', 'value' => 'kravchukdim\seo\components\SeoBasicPage'],
             [['status', 'categoryId', 'createdAt', 'updatedAt'], 'integer'],
             [['url', 'name','seoPageClass', 'categoryId', 'status'], 'required'],
-            [['url', 'name', 'seoPageClass', 'module', 'controller', 'action'], 'string', 'max' => 255]
+            [['url', 'name', 'seoPageClass'], 'string', 'max' => 255]
         ];
     }
 
@@ -64,9 +63,7 @@ class SeoModel extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'url' => Yii::t('app', 'Url'),
-            'module' => Yii::t('app', 'Module'),
-            'controller' => Yii::t('app', 'Controller'),
-            'action' => Yii::t('app', 'Action'),
+            'urlRule' => Yii::t('app', 'Url Rule'),
 
             'name' => Yii::t('app', 'Name'),
             'comment' => Yii::t('app', 'Comment'),
