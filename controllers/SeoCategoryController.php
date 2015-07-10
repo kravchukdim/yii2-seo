@@ -1,10 +1,10 @@
 <?php
 
-namespace kravchukdim\seo\controllers;
+namespace kravchukdim\yii2seo\controllers;
 
 use Yii;
-use kravchukdim\seo\models\SeoCategoryModel;
-use kravchukdim\seo\models\search\SeoCategorySearch;
+use kravchukdim\yii2seo\models\SeoCategoryModel;
+use kravchukdim\yii2seo\models\search\SeoCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -16,7 +16,7 @@ use yii2mod\toggle\actions\ToggleAction;
  * SeoController implements the CRUD actions for SeoCategoryModel model.
  * @author Kravchuk Dmitry
  *
- * @package kravchukdim\seo\controllers
+ * @package kravchukdim\yii2seo\controllers
  */
 class SeoCategoryController extends Controller
 {
@@ -66,8 +66,8 @@ class SeoCategoryController extends Controller
         $searchModel = new SeoCategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-//        return $this->render('@vendor/kravchukdim/seo/views/seoCategory/index', [
-        return $this->render('@vendor/kravchukdim/seo/views/seoCategory/index', [
+//        return $this->render('@vendor/kravchukdim/yii2seo/views/seoCategory/index', [
+        return $this->render('@vendor/kravchukdim/yii2seo/views/seoCategory/index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -87,8 +87,8 @@ class SeoCategoryController extends Controller
             return $this->redirect(['index']);
         }
 
-//        return $this->render('@vendor/kravchukdim/seo/views/seoCategory/create', [
-        return $this->render('@vendor/kravchukdim/seo/views/seoCategory/create', [
+//        return $this->render('@vendor/kravchukdim/yii2seo/views/seoCategory/create', [
+        return $this->render('@vendor/kravchukdim/yii2seo/views/seoCategory/create', [
             'model' => $model,
         ]);
 
@@ -109,8 +109,8 @@ class SeoCategoryController extends Controller
             return $this->redirect(['index']);
         }
 
-//        return $this->render('@vendor/kravchukdim/seo/views/seoCategory/update', [
-        return $this->render('@vendor/kravchukdim/seo/views/seoCategory/update', [
+//        return $this->render('@vendor/kravchukdim/yii2seo/views/seoCategory/update', [
+        return $this->render('@vendor/kravchukdim/yii2seo/views/seoCategory/update', [
             'model' => $model,
         ]);
 

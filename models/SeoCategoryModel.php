@@ -1,18 +1,18 @@
 <?php
 
-namespace kravchukdim\seo\models;
+namespace kravchukdim\yii2seo\models;
 
 use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
-use kravchukdim\seo\models\query\SeoCategoryQuery;
+use kravchukdim\yii2seo\models\query\SeoCategoryQuery;
 
 /**
  * Class SeoCategoryModel
  * This is the model class for table "SeoCategory".
  * @author Kravchuk Dmitry
  *
- * @package kravchukdim\seo\models
+ * @package kravchukdim\yii2seo\models
  *
  * @property integer $id
  * @property string $name

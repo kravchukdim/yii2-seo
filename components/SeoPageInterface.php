@@ -1,11 +1,11 @@
 <?php
 
-namespace kravchukdim\seo\components;
+namespace kravchukdim\yii2seo\components;
 
 /**
  * Interface SeoPageInterface
  * @author Kravchuk Dmitry
- * @package kravchukdim\seo\components
+ * @package kravchukdim\yii2seo\components
  */
 interface SeoPageInterface
 {

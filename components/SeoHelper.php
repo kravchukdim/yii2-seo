@@ -1,6 +1,6 @@
 <?php
 
-namespace kravchukdim\seo\components;
+namespace kravchukdim\yii2seo\components;
 
 
 use Yii;
@@ -13,7 +13,7 @@ use ReflectionClass;
  * Class SeoHelper
  * @author Kravchuk Dmitry
  *
- * @package kravchukdim\seo\components
+ * @package kravchukdim\yii2seo\components
  */
 class SeoHelper
 {

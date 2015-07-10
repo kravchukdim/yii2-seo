@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-use kravchukdim\seo\models\enumerable\SeoCategoryStatus;
+use kravchukdim\yii2seo\models\enumerable\SeoCategoryStatus;
 
 /* @var $this yii\web\View */
 /* @var $model app\components\seo\models\SeoCategoryModel */

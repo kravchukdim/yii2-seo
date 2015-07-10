@@ -1,25 +1,25 @@
 <?php
 
-namespace kravchukdim\seo\components;
+namespace kravchukdim\yii2seo\components;
 
 use Yii;
 use yii\base\Exception;
 use yii\helpers\Url;
 
-use kravchukdim\seo\models\SeoModel;
+use kravchukdim\yii2seo\models\SeoModel;
 
 /**
  * Class Seo
  * Set / show seo data
  * @author  Kravchuk Dmitry
- * @package kravchukdim\seo\components
+ * @package kravchukdim\yii2seo\components
  */
 class Seo
 {
     private static $_instance = null;
 
     /**
-     * object kravchukdim\seo\components\SeoPageInterface
+     * object kravchukdim\yii2seo\components\SeoPageInterface
      * @var null
      */
     private $seoPage = null;
@@ -63,7 +63,7 @@ class Seo
             $seoPage = Yii::createObject($config);
 
             if (!empty($seoPage)) {
-                if(!is_subclass_of($seoPage, 'kravchukdim\seo\components\SeoPageInterface')) {
+                if(!is_subclass_of($seoPage, 'kravchukdim\yii2seo\components\SeoPageInterface')) {
                     throw new Exception('Error, invalid seo page class');
                 }
                 $this->seoPage = $seoPage;

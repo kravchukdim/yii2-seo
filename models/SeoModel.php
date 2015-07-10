@@ -1,17 +1,17 @@
 <?php
 
-namespace kravchukdim\seo\models;
+namespace kravchukdim\yii2seo\models;
 
 use Yii;
 
-use kravchukdim\seo\models\query\SeoQuery;
+use kravchukdim\yii2seo\models\query\SeoQuery;
 
 /**
  * Class SeoModel
  * This is the model class for table "Seo".
  * @author Kravchuk Dmitry
  *
- * @package kravchukdim\seo\models
+ * @package kravchukdim\yii2seo\models
  *
  * @property integer $id
  * @property string $url
@@ -48,7 +48,7 @@ class SeoModel extends \yii\db\ActiveRecord
     {
         return [
             [['comment', 'pageContent', 'metaTitle', 'metaDescription', 'metaKeywords', 'urlRule'], 'string'],
-            ['seoPageClass', 'default', 'value' => 'kravchukdim\seo\components\SeoBasicPage'],
+            ['seoPageClass', 'default', 'value' => 'kravchukdim\yii2seo\components\SeoBasicPage'],
             [['status', 'categoryId', 'createdAt', 'updatedAt'], 'integer'],
             [['url', 'name','seoPageClass', 'categoryId', 'status'], 'required'],
             [['url', 'name', 'seoPageClass'], 'string', 'max' => 255]

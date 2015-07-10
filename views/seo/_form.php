@@ -6,9 +6,9 @@ use yii\widgets\ActiveForm;
 
 use kartik\select2\Select2;
 
-use kravchukdim\seo\models\enumerable\SeoStatus;
-use kravchukdim\seo\models\SeoCategoryModel;
-use kravchukdim\seo\components\SeoHelper;
+use kravchukdim\yii2seo\models\enumerable\SeoStatus;
+use kravchukdim\yii2seo\models\SeoCategoryModel;
+use kravchukdim\yii2seo\components\SeoHelper;
 
 
 
