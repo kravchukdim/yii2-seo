@@ -33,9 +33,6 @@ class m150618_102820_init_seo extends Migration
             'updatedAt' => Schema::TYPE_INTEGER,
         ], $tableOptions);
 
-        $this->addForeignKey('fkSeoCategory', '{{%Seo}}', 'categoryId', '{{%SeoCategory}}', 'id', 'CASCADE', 'CASCADE');
-
-
         $this->createTable('{{%SeoCategory}}', [
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING . '(255)',
@@ -52,8 +49,7 @@ class m150618_102820_init_seo extends Migration
             'updatedAt' => Schema::TYPE_INTEGER,
         ], $tableOptions);
 
-
-
+        $this->addForeignKey('fkSeoCategory', '{{%Seo}}', 'categoryId', '{{%SeoCategory}}', 'id', 'CASCADE', 'CASCADE');
     }
 
     public function down()
